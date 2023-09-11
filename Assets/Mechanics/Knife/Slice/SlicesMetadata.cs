@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using UnityEngine.UIElements;
 
-namespace Assets.Scripts
+namespace Assets.Mechanics
 {
     /// <summary>
     /// The side of the mesh

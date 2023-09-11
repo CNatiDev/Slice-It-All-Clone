@@ -25,6 +25,8 @@ public class Jumpable : MonoBehaviour, IJumpable
     {
         GetComponent<IRotable>().Jump = false;
         rb.constraints |= RigidbodyConstraints.FreezeRotationX;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
 }

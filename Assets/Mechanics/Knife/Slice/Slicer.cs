@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace Assets.Scripts
+namespace Assets.Mechanics
 {
-    class Slicer
+    class Slicer : MonoBehaviour
     {
         /// <summary>
         /// Slice the object by the plane 
@@ -13,7 +13,7 @@ namespace Assets.Scripts
         /// <param name="plane"></param>
         /// <param name="objectToCut"></param>
         /// <returns></returns>
-        public static GameObject[] Slice(Plane plane, GameObject objectToCut)
+        public static GameObject[] Slice(Plane plane, GameObject objectToCut, float Force)
         {            
             //Get the current mesh and its verts and tris
             Mesh mesh = objectToCut.GetComponent<MeshFilter>().mesh;
@@ -40,10 +40,10 @@ namespace Assets.Scripts
             positiveObject.GetComponent<MeshFilter>().mesh = positiveSideMeshData;
             negativeObject.GetComponent<MeshFilter>().mesh = negativeSideMeshData;
 
-            SetupCollidersAndRigidBodys(ref positiveObject, positiveSideMeshData, sliceable.UseGravity);
-            SetupCollidersAndRigidBodys(ref negativeObject, negativeSideMeshData, sliceable.UseGravity);
+           SetupCollidersAndRigidBodys(ref positiveObject, positiveSideMeshData, sliceable.UseGravity, Force,false);
+           SetupCollidersAndRigidBodys(ref negativeObject, negativeSideMeshData, sliceable.UseGravity, Force, true);
 
-            return new GameObject[] { positiveObject, negativeObject};
+            return new GameObject[] { positiveObject, negativeObject}; 
         }        
 
         /// <summary>
@@ -82,14 +82,24 @@ namespace Assets.Scripts
         /// </summary>
         /// <param name="gameObject"></param>
         /// <param name="mesh"></param>
-        private static void SetupCollidersAndRigidBodys(ref GameObject gameObject, Mesh mesh, bool useGravity)
+        private static void SetupCollidersAndRigidBodys(ref GameObject gameObject, Mesh mesh, bool useGravity, float force, bool Left)
         {                     
             MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
             meshCollider.sharedMesh = mesh;
             meshCollider.convex = true;
-
             var rb = gameObject.AddComponent<Rigidbody>();
+            if (Left)
+            {
+                rb.AddForce(Vector3.left * force, ForceMode.Impulse);
+
+            }
+            else
+            {
+                rb.AddForce(Vector3.right * force, ForceMode.Impulse);
+            }
             rb.useGravity = useGravity;
+            Destroy(gameObject,3f);
+
         }
     }
 }
