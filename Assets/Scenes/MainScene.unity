@@ -161,13 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ae03d96b0d289408cb7caf0f10cd0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 5
-  <IsJumping>k__BackingField: 0
-  rotationSpeed: 360
-  rotationDecrease: 1
-  targetRotationX: 50
-  forwardForce: 0
-  rb: {fileID: 0}
 --- !u!54 &67320236
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -271,7 +264,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1175167102454842276, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_Name
-      value: Barrel (5)
+      value: Barrel
       objectReference: {fileID: 0}
     - target: {fileID: 1946919448249866526, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_RootOrder
@@ -434,7 +427,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1175167102454842276, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_Name
-      value: Barrel (4)
+      value: Barrel
       objectReference: {fileID: 0}
     - target: {fileID: 1946919448249866526, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_RootOrder
@@ -585,7 +578,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1175167102454842276, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_Name
-      value: Barrel (2)
+      value: Barrel
       objectReference: {fileID: 0}
     - target: {fileID: 1946919448249866526, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_RootOrder
@@ -654,7 +647,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1175167102454842276, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_Name
-      value: Barrel (3)
+      value: Barrel
       objectReference: {fileID: 0}
     - target: {fileID: 1946919448249866526, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_RootOrder
@@ -978,7 +971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a21da1134f3e346a6004eab6247120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothSpeed: 5
+  SmoothSpeed: 5
 --- !u!1 &980380216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1027,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1175167102454842276, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_Name
-      value: Barrel (7)
+      value: Barrel
       objectReference: {fileID: 0}
     - target: {fileID: 1946919448249866526, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_RootOrder
@@ -1198,6 +1191,7 @@ GameObject:
   - component: {fileID: 1535956606}
   - component: {fileID: 1535956605}
   - component: {fileID: 1535956604}
+  - component: {fileID: 1535956608}
   m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
@@ -1283,6 +1277,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1535956608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535956603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3776df5a4619057499103ce2e3540201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmoothSpeed: 5
 --- !u!4 &1659534955 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1946919448249866526, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
@@ -1415,7 +1422,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1175167102454842276, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_Name
-      value: Barrel (6)
+      value: Barrel
       objectReference: {fileID: 0}
     - target: {fileID: 1946919448249866526, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_RootOrder
@@ -1595,7 +1602,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1175167102454842276, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_Name
-      value: Barrel (8)
+      value: Barrel
       objectReference: {fileID: 0}
     - target: {fileID: 1946919448249866526, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_RootOrder
@@ -1668,7 +1675,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1175167102454842276, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_Name
-      value: Barrel (1)
+      value: Barrel
       objectReference: {fileID: 0}
     - target: {fileID: 1946919448249866526, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_RootOrder
@@ -1730,7 +1737,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1175167102454842276, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_Name
-      value: Barrel (9)
+      value: Barrel
       objectReference: {fileID: 0}
     - target: {fileID: 1946919448249866526, guid: ab55e5c5fa49a05448b389450e6a2c26, type: 3}
       propertyPath: m_RootOrder
