@@ -21,4 +21,16 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
     public GameObject MainPlayer;
+    private void Start()
+    {
+        StopGame();
+    }
+    public void PlayGame()
+    {
+        Time.timeScale = 1.0f;
+    }
+    public void StopGame()
+    {
+        Time.timeScale = 0;
+    }
 }
