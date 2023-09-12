@@ -34,7 +34,7 @@ public class ProceduralMapGenerator : MonoBehaviour
                 }
             }
         // check if any buildings are behind the player and far enough to be destroyed
-        SpawnedSliceable = GameObject.FindGameObjectsWithTag("Building");
+        SpawnedSliceable = GameObject.FindGameObjectsWithTag("Sliceable");
         if (PlayerTransform != null)
             foreach (GameObject building in SpawnedSliceable)
             {
@@ -47,14 +47,14 @@ public class ProceduralMapGenerator : MonoBehaviour
     public void SpawnBuild()
     {
         int randomSliceable = Random.Range(0, SliceablePrefabs.Length);
-        int randomDistance = Random.Range(10 , MaxSpawnDistance);
+        int randomDistance = Random.Range(17 , MaxSpawnDistance);
         Debug.Log($"randomSliceable : {randomSliceable} <-> randomDistance: {randomDistance}");
         transform.localPosition = new Vector3(transform.localPosition.x
             , transform.localPosition.y
             , PlayerTransform.transform.localPosition.z);
         Vector3 spawnPosition = new Vector3(transform.position.x
-            , SpawnedSliceable[SpawnedSliceable.Length - 1].transform.position.y
-            , SpawnedSliceable[SpawnedSliceable.Length - 1].transform.position.z + randomDistance);
+            , transform.position.y
+            , SpawnedSliceable[SpawnedSliceable.Length - 1].transform.localPosition.z + randomDistance);
         Instantiate(SliceablePrefabs[randomSliceable]
             , spawnPosition
             , Quaternion.identity);

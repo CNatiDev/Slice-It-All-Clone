@@ -40,8 +40,10 @@ namespace Assets.Mechanics
             positiveObject.GetComponent<MeshFilter>().mesh = positiveSideMeshData;
             negativeObject.GetComponent<MeshFilter>().mesh = negativeSideMeshData;
 
-           SetupCollidersAndRigidBodys(ref positiveObject, positiveSideMeshData, sliceable.UseGravity, Force,false);
-           SetupCollidersAndRigidBodys(ref negativeObject, negativeSideMeshData, sliceable.UseGravity, Force, true);
+            SetupCollidersAndRigidBodys(ref positiveObject, positiveSideMeshData, sliceable.UseGravity, Force,false);
+            SetupCollidersAndRigidBodys(ref negativeObject, negativeSideMeshData, sliceable.UseGravity, Force, true);
+
+            GameManager.Instance.IncreasaScore();
 
             return new GameObject[] { positiveObject, negativeObject}; 
         }        
