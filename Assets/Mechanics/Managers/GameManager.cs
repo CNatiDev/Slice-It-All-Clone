@@ -2,33 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
+    private static GameManager _instance;
     public static GameManager Instance
     {
         get
         {
 
-            if (instance == null)
-                Debug.Log("Game Manager is null");
+            if (_instance == null)
+                Debug.LogError("Game Manager is null");
 
-            return instance;
+            return _instance;
         }
     }
     private void Awake()
     {
-        instance = this;
+        _instance = this;
     }
-    public GameObject MainPlayer;
-    public TextMeshProUGUI ScoreText;
-    private int Score;
+    [Header("MainPlayer/Knife")]
+    public GameObject _mainPlayer;
+
+    [Header("SCORE")]
+    public TextMeshProUGUI _scoreText;
+    public int _score;
+
+    [Header("SCREENS")]
+    public GameObject _winScreen;
+    public GameObject _loseScreen;
     private void Start()
     {
         StopGame();
-        Score = 0;
-        ScoreText.text = Score.ToString();
+        _score = 0;
+        _scoreText.text = _score.ToString();
        
     }
     public void PlayGame()
@@ -41,7 +49,13 @@ public class GameManager : MonoBehaviour
     }
     public void IncreasaScore()
     {
-        Score += 1;
-        ScoreText.text = Score.ToString();
+        _score += 1;
+        _scoreText.text = _score.ToString();
+    }
+    // Assing on restart button in win screen
+    public void RestartLevel()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }

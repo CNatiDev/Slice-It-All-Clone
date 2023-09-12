@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         //Get the player from Game Manager
-        Player = GameManager.Instance.MainPlayer.transform;
+        Player = GameManager.Instance._mainPlayer.transform;
         // Calculate the initial offset between the player and the camera.
         Offset = transform.position - Player.position;
 

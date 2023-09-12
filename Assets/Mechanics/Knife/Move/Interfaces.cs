@@ -2,7 +2,7 @@ public interface IRotable
 {
     void HandleRotation();
     void CanRotate();
-    bool Jump { get; set; }
+    bool _jump { get; set; }
 }
 public interface IMoveable
 {

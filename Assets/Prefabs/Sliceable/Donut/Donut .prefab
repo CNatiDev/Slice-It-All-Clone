@@ -42,6 +42,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 264402696184994353}
     m_Modifications:
+    - target: {fileID: 2596341051820280992, guid: 7ad882d92260f6d42900c84561064dd3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ec65d265b4face4468049153c6374c17, type: 2}
     - target: {fileID: 3765891863754373071, guid: 7ad882d92260f6d42900c84561064dd3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -138,6 +142,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 264402696184994353}
     m_Modifications:
+    - target: {fileID: 2596341051820280992, guid: 7ad882d92260f6d42900c84561064dd3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ec65d265b4face4468049153c6374c17, type: 2}
     - target: {fileID: 3765891863754373071, guid: 7ad882d92260f6d42900c84561064dd3, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -234,6 +242,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 264402696184994353}
     m_Modifications:
+    - target: {fileID: 2596341051820280992, guid: 7ad882d92260f6d42900c84561064dd3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ec65d265b4face4468049153c6374c17, type: 2}
     - target: {fileID: 3765891863754373071, guid: 7ad882d92260f6d42900c84561064dd3, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -330,6 +342,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 264402696184994353}
     m_Modifications:
+    - target: {fileID: 2596341051820280992, guid: 7ad882d92260f6d42900c84561064dd3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ec65d265b4face4468049153c6374c17, type: 2}
     - target: {fileID: 3765891863754373071, guid: 7ad882d92260f6d42900c84561064dd3, type: 3}
       propertyPath: m_RootOrder
       value: 0

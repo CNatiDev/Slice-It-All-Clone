@@ -4,12 +4,12 @@ public class PlayerInput : MonoBehaviour
 {
     public bool CanMove { get; private set; }  
     public bool CanJump { get; private set; }
-    public event Action Move = delegate { };
-    public event Action Jump = delegate { };
+    public event Action _move = delegate { };
+    public event Action _jump = delegate { };
     private void Awake()
     {
-        Move += GetComponent<IMoveable>().HandleMovement;
-        Jump += GetComponent<IJumpable>().HandleJump;
+        _move += GetComponent<IMoveable>().HandleMovement;
+        _jump += GetComponent<IJumpable>().HandleJump;
     }
     void Update()
     {
@@ -17,11 +17,11 @@ public class PlayerInput : MonoBehaviour
         CanJump = Input.GetButtonDown("Move");
         if (CanMove)
         {
-            Move();
+            _move();
         }
         if (CanJump)
         {
-            Jump();
+            _jump();
 
         }
 

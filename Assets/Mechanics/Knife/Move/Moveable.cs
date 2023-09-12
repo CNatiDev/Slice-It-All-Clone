@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Moveable : MonoBehaviour,IMoveable
 {
-    public float ForwardForce = 0.0f;
-    private Rigidbody rb;
+    public float _forwardForce = 0.0f;
+    private Rigidbody _rb;
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
     }
     public void HandleMovement()
     {
-        rb.AddForce(Vector3.forward * ForwardForce, ForceMode.VelocityChange);
+        _rb.AddForce(Vector3.forward * _forwardForce, ForceMode.VelocityChange);
     }
 }
