@@ -39,6 +39,9 @@ namespace Assets.Mechanics
             SetupCollidersAndRigidBodys(ref negativeObject, negativeSideMeshData, sliceable.UseGravity, Force, true);
 
             GameManager.Instance.IncreasaScore();
+            GameManager.Instance.CheckSpike();
+
+            objectToCut.GetComponent<Sliceable>().enabled = false;
 
             return new GameObject[] { positiveObject, negativeObject}; 
         }        
@@ -70,6 +73,8 @@ namespace Assets.Mechanics
             meshGameObject.transform.position = originalObject.transform.position;
 
             meshGameObject.tag = originalObject.tag;
+
+
 
             return meshGameObject;
         }

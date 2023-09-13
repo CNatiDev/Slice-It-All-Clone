@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,6 +33,10 @@ public class GameManager : MonoBehaviour
     [Header("SCREENS")]
     public GameObject _winScreen;
     public GameObject _loseScreen;
+
+    [Header("SPIKE")]
+    public float _spikeCanEnable;
+    public GameObject _spikeButton;
     private void Start()
     {
         StopGame();
@@ -57,5 +62,12 @@ public class GameManager : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+    }
+    public void CheckSpike()
+    {
+        if (_score==_spikeCanEnable)
+        {
+            _spikeButton.SetActive(true);
+        }
     }
 }

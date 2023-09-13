@@ -99,21 +99,21 @@ public class ProceduralMapGenerator : MonoBehaviour
             , transform.localPosition.y
             , _playerTransform.transform.localPosition.z);
 
-        Vector3 spawnPosition = new Vector3(transform.position.x
+        Vector3 _spawnPosition = new Vector3(transform.position.x
             , transform.position.y
             , _spawnedSliceable[_spawnedSliceable.Length - 1].transform.localPosition.z + _randomDistance);
 
         if (_alreadySpawned == _currentLevel)
         {
             Instantiate(_winPrefab
-            , spawnPosition
+            , _spawnPosition
             , Quaternion.identity);
             GetComponent<ProceduralMapGenerator>().enabled = false;
         }
         else
         {
             Instantiate(_sliceablePrefabs[_randomSliceable]
-            , spawnPosition
+            , _spawnPosition
             , Quaternion.identity);
         }
 
@@ -126,7 +126,7 @@ public class ProceduralMapGenerator : MonoBehaviour
             , transform.position.y
             , _lastTrap.transform.position.z + _distance2NextTrap);
             _lastTrap = Instantiate(_trapPrefab
-            , spawnPosition
+            , _spawnPosition
             , Quaternion.identity);
         }
         _lastSpawnTime = Time.time;

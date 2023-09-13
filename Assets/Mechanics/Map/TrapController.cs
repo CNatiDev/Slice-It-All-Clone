@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class TrapController : MonoBehaviour
 {
+    private GameManager _gameManager;
+    private void Start()
+    {
+        _gameManager = GameManager.Instance;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.StopGame();
-            GameManager.Instance._loseScreen.SetActive(true);
+            _gameManager.StopGame();
+            _gameManager._loseScreen.SetActive(true);
         }
-            
+
     }
 }
