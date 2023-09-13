@@ -2992,18 +2992,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1849239248}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 1980686609}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -3627,9 +3615,9 @@ MonoBehaviour:
   _minFOV: 60
   _zoomSpeed: 30
   _maxCameraY: -60
+  _minCameraY: -40
   _rotateSpeedCameraY: 10
   _currentCameraY: -60
-  _minCameraY: -40
   inSpike: 0
   _maxSpikeForce: 100
   _spikeGrowthRate: 40

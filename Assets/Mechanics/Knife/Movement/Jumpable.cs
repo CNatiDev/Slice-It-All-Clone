@@ -27,6 +27,10 @@ public class Jumpable : MonoBehaviour, IJumpable
         _rb.constraints |= RigidbodyConstraints.FreezeRotationX;
         _rb.velocity = Vector3.zero;
         _rb.angularVelocity = Vector3.zero;
+        //enable in case spike disable Rotable class
+        var _rotable = GetComponent<Rotable>();
+        if (_rotable != null)
+            _rotable.enabled = true;
     }
 
 }

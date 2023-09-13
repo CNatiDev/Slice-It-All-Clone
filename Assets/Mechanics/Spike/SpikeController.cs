@@ -90,7 +90,9 @@ public class SpikeController : MonoBehaviour
     public void Spike()
     {
         SetSpiker(false);
-        _rb.AddForce(Vector3.forward * _spikeForce, ForceMode.Impulse);
+        // Get the local forward direction of the GameObject
+        Vector3 localForward = transform.forward;
+        _rb.AddForce(localForward * _spikeForce, ForceMode.Impulse);
         _spikeForce = 0;
         _amountFillIcon = 0.01f;
     }
