@@ -15,6 +15,8 @@ public class TrapController : MonoBehaviour
         {
             _gameManager.StopGame();
             _gameManager._loseScreen.SetActive(true);
+            _gameManager._spikeButton.SetActive(false);
+            _gameManager._menuButton.SetActive(false);
         }
 
     }

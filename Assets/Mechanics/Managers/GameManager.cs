@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     [Header("SCREENS")]
     public GameObject _winScreen;
     public GameObject _loseScreen;
+    public GameObject _menuButton;
 
     [Header("SPIKE")]
     public float _spikeCanEnable;

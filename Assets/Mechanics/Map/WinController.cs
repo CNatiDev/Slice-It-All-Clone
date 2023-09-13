@@ -22,6 +22,8 @@ public class WinController : MonoBehaviour
             _gameManager._mainPlayer.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePosition;
             _proceduralMapGenerator._currentLevel += 1;
             PlayerPrefs.SetInt("CurrentLevel", _proceduralMapGenerator._currentLevel);
+            _gameManager._spikeButton.SetActive(false);
+            _gameManager._menuButton.SetActive(false);
             _gameManager.StopGame();
         }
 

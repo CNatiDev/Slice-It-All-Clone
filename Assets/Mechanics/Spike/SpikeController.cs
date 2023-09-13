@@ -12,14 +12,24 @@ public class SpikeController : MonoBehaviour
         get { return _instace; }
     }
 
-    public Camera _mainCamera;
+
+    [Header("Camera FOV settings")]
     public float _maxFOV = 90f;
     public float _minFOV = 60f;
     public float _zoomSpeed = 30f;
+    public float _maxCameraY;
+    public float _minCameraY;
+    public float _rotateSpeedCameraY;
+    public float _currentCameraY;
+
+
+    [Header("Spike")]
     public bool inSpike;
     public float _maxSpikeForce = 0f;
     public float _spikeGrowthRate;
     public float _spikeForce = 0;
+
+    [Header("UI")]
     public GameObject _arrow;
     public Slider _spikeForceSlider;
     public Image _spikeIcon;
@@ -27,13 +37,14 @@ public class SpikeController : MonoBehaviour
     
 
     private Rigidbody _rb;
+    private Camera _mainCamera;
     private float _currentFOV;
-    private bool isZoomingIn = false;
     private bool isZoomingOut = false;
-    private float _amount = 0.01f;
+    private float _amountFillIcon = 0.01f; 
 
     private void Start()
     {
+        _mainCamera = Camera.main;
         _currentFOV = _mainCamera.fieldOfView;
         _rb = GetComponent<Rigidbody>();
     }
@@ -43,24 +54,24 @@ public class SpikeController : MonoBehaviour
         HandleSpikeForce();
 
         _spikeForceSlider.value = _spikeForce;
-        /*if (isZoomingIn)
-        {
-            _currentFOV -= _zoomSpeed * Time.deltaTime;
-            _currentFOV = Mathf.Clamp(_currentFOV, _minFOV, _maxFOV);
-        }*/
         if (isZoomingOut)
         {
             _currentFOV += _zoomSpeed * Time.deltaTime;
             _currentFOV = Mathf.Clamp(_currentFOV, _minFOV, _maxFOV);
+            _currentCameraY += _rotateSpeedCameraY * Time.deltaTime;
+            _currentCameraY = Mathf.Clamp(_currentCameraY, _maxCameraY, _minCameraY);
         }
         else
         {
             _currentFOV -= _zoomSpeed * Time.deltaTime;
             _currentFOV = Mathf.Clamp(_currentFOV, _minFOV, _maxFOV);
+            _currentCameraY -= _rotateSpeedCameraY * Time.deltaTime;
+            _currentCameraY = Mathf.Clamp(_currentCameraY, _maxCameraY, _minCameraY);
         }
 
         _mainCamera.fieldOfView = Mathf.Lerp(_mainCamera.fieldOfView, _currentFOV, Time.deltaTime * _zoomSpeed);
-
+        Quaternion _newRotationY = Quaternion.Euler(0, _currentCameraY, 0);
+        _mainCamera.transform.rotation = Quaternion.Lerp(_mainCamera.transform.rotation, _newRotationY, _rotateSpeedCameraY * Time.deltaTime);
         HandleIconFillAmount();
     }
 
@@ -70,19 +81,18 @@ public class SpikeController : MonoBehaviour
     }
     public void SetSpiker(bool _spikeStatus)
     {
-        isZoomingIn &= !_spikeStatus;
         isZoomingOut = _spikeStatus;
         _arrow.SetActive(_spikeStatus);
         _rb.isKinematic = _spikeStatus;
-        _amount = 0.01f;
         inSpike = _spikeStatus;
+        _amountFillIcon = 0.01f;
     }
     public void Spike()
     {
         SetSpiker(false);
         _rb.AddForce(Vector3.forward * _spikeForce, ForceMode.Impulse);
         _spikeForce = 0;
-        _amount = 0.01f;
+        _amountFillIcon = 0.01f;
     }
     private bool isIncreasing = true;
     void HandleSpikeForce()
@@ -93,10 +103,8 @@ public class SpikeController : MonoBehaviour
             // Increase _spikeForce up to _maxSpikeForce
             _spikeForce += _spikeGrowthRate * Time.deltaTime;
 
-            // Check if it has reached or exceeded _maxSpikeForce
             if (_spikeForce >= _maxSpikeForce)
             {
-                // If it has reached or exceeded, switch the direction to decreasing
                 isIncreasing = false;
             }
         }
@@ -105,10 +113,8 @@ public class SpikeController : MonoBehaviour
             // Decrease _spikeForce down to zero
             _spikeForce -= _spikeGrowthRate * Time.deltaTime;
 
-            // Check if it has reached zero
             if (_spikeForce <= 0)
             {
-                // If it has reached zero, switch the direction to increasing
                 isIncreasing = true;
             }
         }
@@ -120,13 +126,13 @@ public class SpikeController : MonoBehaviour
     {   if (!inSpike)
             {
             // Increase _amount by _fillSpeed * Time.deltaTime
-            _amount += _fillSpeed * Time.deltaTime;
+            _amountFillIcon += _fillSpeed * Time.deltaTime;
 
             // Clamp _amount between 0 and 1 using Mathf.Clamp01
-            _amount = Mathf.Clamp01(_amount);
+            _amountFillIcon = Mathf.Clamp01(_amountFillIcon);
 
             // Update the fillAmount of the _spikeIcon
-            _spikeIcon.fillAmount = _amount;
+            _spikeIcon.fillAmount = _amountFillIcon;
             if (_spikeIcon.fillAmount == 1)
             {
                 _spikeIcon.GetComponent<Button>().interactable = true;

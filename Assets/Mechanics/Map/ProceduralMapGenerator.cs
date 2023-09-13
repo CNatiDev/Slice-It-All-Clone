@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -35,6 +36,7 @@ public class ProceduralMapGenerator : MonoBehaviour
 
     [Tooltip("Current level for know how much sliceable need to spawn")]
     public int _currentLevel = 1;
+    public TextMeshProUGUI _levelText;
     //how much sliceable already was spawned
     private int _alreadySpawned = 0;
 
@@ -64,7 +66,8 @@ public class ProceduralMapGenerator : MonoBehaviour
     private void Start()
     {
         _playerTransform = GameManager.Instance._mainPlayer.transform;
-        _currentLevel = PlayerPrefs.GetInt("CurrentLevel", 0);
+        _currentLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
+        _levelText.text = _currentLevel.ToString();
 
     }
     void Update()
